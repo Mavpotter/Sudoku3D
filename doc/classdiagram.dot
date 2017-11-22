@@ -1,0 +1,35 @@
+digraph G {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+
+    node [
+        fontname = "Bitstream Vera Sans"
+        fontsize = 10
+        shape = "record"
+    ]
+
+    edge [
+        fontname = "Bitstream Vera Sans"
+        fontsize = 10
+    ]
+
+    subgraph packagemodel{
+
+        label = "Package model"
+
+        BasicSudoku3D [
+            label = "{BasicSudoku3D|\
+                # solutionSudoku3D: int[][][]\l\
+                # constantFields: int[][][]\l\
+                # sudoku3D: int[][][]\l|\
+                + BasicSudoku3D(): BasicSudoku3D\l\
+                # areRulesFollowed(int, int, int): boolean\l\
+                - areRowsOk(int, int, int): boolean\l\
+                - isBoxOk(int, int, int): boolean\l\
+                + isSolved(): boolean\l\
+                + checkStatus(): String[]\l\
+                + clear(): void\l\
+                + insert(int, int, int, int): void\l}"
+        ]
+    }
+}
