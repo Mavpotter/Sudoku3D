@@ -15,21 +15,53 @@ digraph G {
 
     subgraph packagemodel{
 
-        label = "Package model"
-
-        BasicSudoku3D [
-            label = "{BasicSudoku3D|\
-                # solutionSudoku3D: int[][][]\l\
-                # constantFields: int[][][]\l\
-                # sudoku3D: int[][][]\l|\
-                + BasicSudoku3D(): BasicSudoku3D\l\
-                # areRulesFollowed(int, int, int): boolean\l\
-                - areRowsOk(int, int, int): boolean\l\
-                - isBoxOk(int, int, int): boolean\l\
-                + isSolved(): boolean\l\
-                + checkStatus(): String[]\l\
-                + clear(): void\l\
-                + insert(int, int, int, int): void\l}"
+        sudoku3dfactory [
+            label =
+            <<table border="0" cellspacing="0" cellborder="1">
+                <tr>
+                    <td>
+                        Sudoku3DFactory
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <u>+ createSudoku3D(int type): Sudoku3D</u>
+                    </td>
+                </tr>
+            </table>>
         ]
+
+        sudoku3d [
+            label =
+            <<table border="0" cellspacing="0" cellborder="1">
+                <tr>
+                    <td>
+                        <i>Sudoku3D</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        # sudoku3D: Field[][][]
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        + isSolved(): boolean<br>
+                        + checkStatus(): String[]<br>
+                        + clear(): void<br>
+                        + insert(int x, int y, int z, int n):void
+                        # areRulesFollowed(int x, int y, int z): boolean
+                        - areBoxRulesFollowed(int x, int y, int z): boolean
+                        - areRowRulesFollowed(int x, int y, int z): boolean
+                        # init(): void
+                    </td>
+                </tr>
+            </table>>
+        ]
+
     }
 }
