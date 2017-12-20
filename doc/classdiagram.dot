@@ -23,14 +23,24 @@ digraph G {
                 </tr>
                 <tr>
                     <td>
+                        <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="left">- solutions: int</td></tr>
+                            <tr><td align="left">- sudoku3D: Sudoku3D</td></tr>
+                        </table>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
                             <tr><td align="left"><u>+ createSudoku3D(int type): Sudoku3D</u></td></tr>
-                            <tr><td align="left">- init(Sudoku3D sudoku3D): void</td></tr>
-                            <tr><td align="left">- insertSomeNumbers(Sudoku3D sudoku3D): void</td></tr>
+                            <tr><td align="left">- Sudoku3DFactory(Sudoku3D sudoku3D)</td></tr>
+                            <tr><td align="left">- getPossibleSolution(): boolean</td></tr>
+                            <tr><td align="left">- hasMoreSolutions(): boolean</td></tr>
+                            <tr><td align="left">- solveSudoku3D(): boolean</td></tr>
+                            <tr><td align="left">- solveSudoku3D(int x, int y, int z): boolean</td></tr>
+                            <tr><td align="left">- getSudoku3D(): Sudoku3D</td></tr>
+                            <tr><td align="left">- init(): void</td></tr>
+                            <tr><td align="left">- insertSomeNumbers(): void</td></tr>
                         </table>
                     </td>
                 </tr>
@@ -90,7 +100,7 @@ digraph G {
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left">+ Field(int x, int y, int z)</td></tr>
+                            <tr><td align="left"># Field(int x, int y, int z)</td></tr>
                             <tr><td align="left"># insert(int n): boolean</td></tr>
                             <tr><td align="left"># isCorrectlyFilled(): boolean</td></tr>
                             <tr><td align="left"># getUnits(): Field[][]</td></tr>
