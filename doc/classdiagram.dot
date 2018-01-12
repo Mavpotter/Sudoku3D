@@ -15,32 +15,38 @@ digraph G {
 
     subgraph packagemodel{
 
-        sudoku3dfactory [
+        field [
             label =
             <<table border="0" cellspacing="0" cellborder="1">
                 <tr>
-                    <td>Sudoku3DFactory</td>
+                    <td>Field</td>
                 </tr>
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left">- solutions: int</td></tr>
-                            <tr><td align="left">- sudoku3D: Sudoku3D</td></tr>
+                            <tr><td align="left">- isChangeable: boolean</td></tr>
+                            <tr><td align="left">- x: int</td></tr>
+                            <tr><td align="left">- y: int</td></tr>
+                            <tr><td align="left">- z: int</td></tr>
+                            <tr><td align="left">- correctInput: int</td></tr>
+                            <tr><td align="left">- userInput: int</td></tr>
+                            <tr><td align="left">- ownUnits: ArrayList&lt;Unit&gt;</td></tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left"><u>+ createSudoku3D(int type): Sudoku3D</u></td></tr>
-                            <tr><td align="left">- Sudoku3DFactory(Sudoku3D sudoku3D)</td></tr>
-                            <tr><td align="left">- getPossibleSolution(): boolean</td></tr>
-                            <tr><td align="left">- hasMoreSolutions(): boolean</td></tr>
-                            <tr><td align="left">- solveSudoku3D(): boolean</td></tr>
-                            <tr><td align="left">- solveSudoku3D(int x, int y, int z): boolean</td></tr>
-                            <tr><td align="left">- getSudoku3D(): Sudoku3D</td></tr>
-                            <tr><td align="left">- init(): void</td></tr>
-                            <tr><td align="left">- insertSomeNumbers(): void</td></tr>
+                            <tr><td align="left"># Field(int x, int y, int z)</td></tr>
+                            <tr><td align="left"># getIsChangeable(): boolean</td></tr>
+                            <tr><td align="left"># insert(int n): boolean</td></tr>
+                            <tr><td align="left"># isCorrectlyFilled(): boolean</td></tr>
+                            <tr><td align="left"># getUserInput(): int</td></tr>
+                            <tr><td align="left"># getCoordsAsArray(): int[]</td></tr>
+                            <tr><td align="left"># getUnits(): Unit[]</td></tr>
+                            <tr><td align="left"># addUnit(Unit u): void</td></tr>
+                            <tr><td align="left"># setIsChangeable(boolean isChangeable): void</td></tr>
+                            <tr><td align="left"># setSolutionFromCurrentState(): void</td></tr>
                         </table>
                     </td>
                 </tr>
@@ -51,79 +57,123 @@ digraph G {
             label =
             <<table border="0" cellspacing="0" cellborder="1">
                 <tr>
-                    <td><i>Sudoku3D</i></td>
-                </tr>
-                <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left"># units: Field[][]</td></tr>
-                            <tr><td align="left"># sudoku3D: Field[][][]</td></tr>
+                            <tr><td align="center"><i>&lt;&lt;interface&gt;&gt;</i></td></tr>
+                            <tr><td align="center"><i>Sudoku3D</i></td></tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
+                    <td></td>
+                </tr>
+                <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="left">+ insert(int x, int y, int z, int n): boolean</td></tr>
                             <tr><td align="left">+ isSolved(): boolean</td></tr>
                             <tr><td align="left">+ getWrongEntries(): int[][]</td></tr>
+                            <tr><td align="left">+ getFieldValues(): int[][][]</td></tr>
                             <tr><td align="left">+ clear(): void</td></tr>
-                            <tr><td align="left">+ insert(int x, int y, int z, int n): void</td></tr>
-                            <tr><td align="left"># noDuplicatesInUnitFromField(Field f): boolean</td></tr>
-                            <tr><td align="left"># unitsCorrectlyFilled(): boolean</td></tr>
-                            <tr><td align="left">- noDuplicatesInUnit(Field[] u): boolean</td></tr>
-                            <tr><td align="left">- unitCorrectlyFilled(Field[] u): boolean</td></tr>
                         </table>
                     </td>
                 </tr>
             </table>>
         ]
 
-        field [
+        sudoku3dfactory [
             label =
             <<table border="0" cellspacing="0" cellborder="1">
                 <tr>
-                    <td>Field</td>
+                    <td>Sudoku3DFactory</td>
                 </tr>
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left">- isChangable: boolean</td></tr>
-                            <tr><td align="left">- x: int</td></tr>
-                            <tr><td align="left">- y: int</td></tr>
-                            <tr><td align="left">- z: int</td></tr>
-                            <tr><td align="left">- correctInput: int</td></tr>
-                            <tr><td align="left">- userInput: int</td></tr>
-                            <tr><td align="left">- ownUnits: Field[][]</td></tr>
+                            <tr><td align="left">- length: int</td></tr>
+                            <tr><td align="left">- solutions: int</td></tr>
+                            <tr><td align="left">- wantedRules: RuleModule[]</td></tr>
+                            <tr><td align="left">- sudoku3D: Sudoku3DModel</td></tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left"># Field(int x, int y, int z)</td></tr>
-                            <tr><td align="left"># insert(int n): boolean</td></tr>
-                            <tr><td align="left"># isCorrectlyFilled(): boolean</td></tr>
-                            <tr><td align="left"># getUnits(): Field[][]</td></tr>
-                            <tr><td align="left"># getUserInput(): int</td></tr>
-                            <tr><td align="left"># getCoordsAsArray(): int[]</td></tr>
+                            <tr><td align="left"><u>+ createSudoku3D(int length, RuleModule[] wantedRules): Sudoku3D</u></td></tr>
+                            <tr><td align="left">- Sudoku3DFactory(int length, RuleModule[] wantedRules)</td></tr>
+                            <tr><td align="left">- getPossibleSolution(): boolean</td></tr>
+                            <tr><td align="left">- hasMoreSolutions(): boolean</td></tr>
+                            <tr><td align="left">- solveSudoku3D(): boolean</td></tr>
+                            <tr><td align="left">- solveSudoku3D(int x, int y, int z): boolean</td></tr>
+                            <tr><td align="left">- getSudoku3D(): Sudoku3D</td></tr>
+                            <tr><td align="left">- init(): void</td></tr>
+                            <tr><td align="left">- insertSomeNumbers(): void</td></tr>
+                            <tr><td align="left">- removeNumbers(): void</td></tr>
                         </table>
                     </td>
                 </tr>
             </table>>
         ]
 
-        basicsudoku3d [
+        sudoku3dmodel [
             label =
             <<table border="0" cellspacing="0" cellborder="1">
                 <tr>
-                    <td>BasicSudoku3D</td>
-                </tr>
-                <tr>
                     <td>
+                        <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="center"><i>&lt;&lt;interface&gt;&gt;</i></td></tr>
+                            <tr><td align="center"><i>Sudoku3D</i></td></tr>
+                        </table>
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="left"># sudoku3D: Field[][][]</i></td></tr>
+                            <tr><td align="left"># units: Unit[]</td></tr>
+                            <tr><td align="left"># length: int</td></tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="left">+ insert(int x, int y, int z, int n): boolean</td></tr>
+                            <tr><td align="left">+ isSolved(): boolean</td></tr>
+                            <tr><td align="left">+ getWrongEntries(): int[][]</td></tr>
+                            <tr><td align="left">+ getFieldValues(): int[][][]</td></tr>
+                            <tr><td align="left">+ clear(): void</td></tr>
+                            <tr><td align="left"># noDuplicatesInUnitsFromField(Field f): boolean</td></tr>
+                            <tr><td align="left"># setSolution(): void</td></tr>
+                            <tr><td align="left"># buildUnitsFromCoordinates(int[][][] coordinates): void</td></tr>
+                            <tr><td align="left">- intiFields(): void</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>>
+        ]
+
+        unit [
+            label =
+            <<table border="0" cellspacing="0" cellborder="1">
+                <tr>
+                    <td>Unit</td>
+                </tr>
+                <tr>
+                    <td>
+                        <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="left">- unit: Field[]</td></tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="left"># Unit(Field[] unit)</td></tr>
+                            <tr><td align="left"># isFreeOfDuplicates(): boolean</td></tr>
+                            <tr><td align="left"># assignToFields(): void</td></tr>
+                        </table>
                     </td>
                 </tr>
             </table>>
@@ -131,6 +181,13 @@ digraph G {
 
         sudoku3dfactory -> sudoku3d
         field -> sudoku3d [arrowhead=diamond]
-        basicsudoku3d -> sudoku3d [arrowhead=onormal]
     }
 }
+                            <tr><td align="left"># noDuplicatesInUnitFromField(Field f): boolean</td></tr>
+                            <tr><td align="left"># unitsCorrectlyFilled(): boolean</td></tr>
+                            <tr><td align="left">- noDuplicatesInUnit(Field[] u): boolean</td></tr>
+                            <tr><td align="left">- unitCorrectlyFilled(Field[] u): boolean</td></tr>
+                        <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="left"># units: Field[][]</td></tr>
+                            <tr><td align="left"># sudoku3D: Field[][][]</td></tr>
+                        </table>
