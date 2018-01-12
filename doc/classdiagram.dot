@@ -183,11 +183,3 @@ digraph G {
         field -> sudoku3d [arrowhead=diamond]
     }
 }
-                            <tr><td align="left"># noDuplicatesInUnitFromField(Field f): boolean</td></tr>
-                            <tr><td align="left"># unitsCorrectlyFilled(): boolean</td></tr>
-                            <tr><td align="left">- noDuplicatesInUnit(Field[] u): boolean</td></tr>
-                            <tr><td align="left">- unitCorrectlyFilled(Field[] u): boolean</td></tr>
-                        <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left"># units: Field[][]</td></tr>
-                            <tr><td align="left"># sudoku3D: Field[][][]</td></tr>
-                        </table>
