@@ -130,7 +130,7 @@ digraph G {
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left"># sudoku3D: Field[][][]</i></td></tr>
+                            <tr><td align="left"># sudoku3D: Field[][][]</td></tr>
                             <tr><td align="left"># units: Unit[]</td></tr>
                             <tr><td align="left"># length: int</td></tr>
                         </table>
