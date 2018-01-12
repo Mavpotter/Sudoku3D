@@ -122,8 +122,7 @@ digraph G {
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="center"><i>&lt;&lt;interface&gt;&gt;</i></td></tr>
-                            <tr><td align="center"><i>Sudoku3D</i></td></tr>
+                            <tr><td align="center">Sudoku3DModel</td></tr>
                         </table>
                     </td>
                 </tr>
@@ -179,7 +178,9 @@ digraph G {
             </table>>
         ]
 
-        sudoku3dfactory -> sudoku3d
-        field -> sudoku3d [arrowhead=diamond]
+        sudoku3dfactory -> sudoku3dmodel
+        field -> sudoku3dmodel [arrowhead=diamond]
+        unit -> sudoku3dmodel [arrowhead=diamond]
+        sudoku3dmodel -> sudoku3d [arrowhead=onormal,style=dashed]
     }
 }
