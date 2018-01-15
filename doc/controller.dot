@@ -2,6 +2,7 @@ digraph G {
     graph [splines=ortho]
     fontname = "Bitstream Vera Sans"
     fontsize = 8
+    newrank=true
 
     node [
         fontname = "Bitstream Vera Sans"
@@ -248,11 +249,14 @@ digraph G {
         ]
     }
 
+    {rank=same request_checkfields sudoku3d}
+    {rank=same request_startgame sudoku3dfactory}
+
     sudoku3dfactory -> sudoku3d [arrowhead=none]
     request_startgame -> abstracthandler [arrowhead=onormal]
     request_startgame -> sudoku3dfactory [arrowhead=none]
     request_checkfields -> abstracthandler [arrowhead=onormal]
-    request_checkfields -> sudoku3dfactory [arrowhead=none]
+    request_checkfields -> sudoku3d [arrowhead=none]
     request_startgame -> request_bridge [arrowhead=diamond]
     request_checkfields -> request_bridge [arrowhead=diamond]
     request_bridge -> sudoku3D_servlet [arrowhead=diamond]
