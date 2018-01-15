@@ -221,6 +221,7 @@ digraph G {
 
     sudoku3dfactory -> sudoku3dmodel
     sudoku3dfactory -> rulemodule
+    sudoku3dfactory -> sudoku3d [arrowhead=none]
     field -> sudoku3dmodel [arrowhead=diamond]
     unit -> sudoku3dmodel [arrowhead=diamond]
     field -> unit [arrowhead=odiamond]
