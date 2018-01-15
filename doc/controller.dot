@@ -80,7 +80,7 @@ digraph G {
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-							<tr><td align="left"># Request_Bridge()</td></tr>
+                            <tr><td align="left"># Request_Bridge()</td></tr>
                             <tr><td align="left"># handleRequest(HttpServletRequest req): JSONObject</td></tr>
                         </table>
                     </td>
@@ -149,7 +149,7 @@ digraph G {
                             <tr><td align="center"><i>&lt;&lt;Abstract&gt;&gt;</i></td></tr>
                             <tr><td align="center"><i>HttpServlet</i></td></tr>
                         </table>
-					</td>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -168,10 +168,10 @@ digraph G {
                             <tr><td align="left"># doOptions(HttpServletRequest req, HttpServletResponse resp): void</td></tr>
                             <tr><td align="left"># doPost(HttpServletRequest req, HttpServletResponse resp): void</td></tr>
                             <tr><td align="left"># doPut(HttpServletRequest req, HttpServletResponse resp): void</td></tr>
-							<tr><td align="left"># doTrace(HttpServletRequest req, HttpServletResponse resp): void</td></tr>
-							<tr><td align="left"># getLastModified(HttpServletRequest req): long</td></tr>
-							<tr><td align="left"># service(HttpServletRequest req, HttpServletResponse resp): long</td></tr>
-							<tr><td align="left"># service(ServletRequest req, ServletResponse resp): long</td></tr>
+                            <tr><td align="left"># doTrace(HttpServletRequest req, HttpServletResponse resp): void</td></tr>
+                            <tr><td align="left"># getLastModified(HttpServletRequest req): long</td></tr>
+                            <tr><td align="left"># service(HttpServletRequest req, HttpServletResponse resp): long</td></tr>
+                            <tr><td align="left"># service(ServletRequest req, ServletResponse resp): long</td></tr>
                         </table>
                     </td>
                 </tr>
