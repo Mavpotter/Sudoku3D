@@ -183,7 +183,7 @@ digraph G {
         {rank="same" unit field}
     }
 
-    sudoku3dfactory -> sudoku3dmodel [arrowhead=none]
+    sudoku3dfactory -> sudoku3dmodel
     field -> sudoku3dmodel [arrowhead=diamond]
     unit -> sudoku3dmodel [arrowhead=diamond]
     field -> unit [arrowhead=odiamond]
