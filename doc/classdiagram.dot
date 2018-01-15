@@ -177,6 +177,9 @@ digraph G {
                 </tr>
             </table>>
         ]
+    }
+
+    subgraph packagecontroller{
 
         request_startgame [
             label =
