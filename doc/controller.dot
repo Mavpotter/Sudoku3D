@@ -13,7 +13,7 @@ digraph G {
         fontsize = 10
     ]
 
-    subgraph packagecontroller{
+    subgraph clustercontroller{
 
         request_startgame [
             label =
@@ -179,6 +179,75 @@ digraph G {
         ]
     }
 
+    subgraph clustermodel{
+
+        label = "package: model"
+
+        sudoku3d [
+            label =
+            <<table border="0" cellspacing="0" cellborder="1">
+                <tr>
+                    <td>
+                        <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="center"><i>&lt;&lt;interface&gt;&gt;</i></td></tr>
+                            <tr><td align="center"><i>Sudoku3D</i></td></tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="left">+ insert(int x, int y, int z, int n): boolean</td></tr>
+                            <tr><td align="left">+ isSolved(): boolean</td></tr>
+                            <tr><td align="left">+ getWrongEntries(): int[][]</td></tr>
+                            <tr><td align="left">+ getFieldValues(): int[][][]</td></tr>
+                            <tr><td align="left">+ clear(): void</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>>
+        ]
+
+        sudoku3dfactory [
+            label =
+            <<table border="0" cellspacing="0" cellborder="1">
+                <tr>
+                    <td>Sudoku3DFactory</td>
+                </tr>
+                <tr>
+                    <td>
+                        <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="left">- length: int</td></tr>
+                            <tr><td align="left">- solutions: int</td></tr>
+                            <tr><td align="left">- wantedRules: RuleModule[]</td></tr>
+                            <tr><td align="left">- sudoku3D: Sudoku3DModel</td></tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="left"><u>+ createSudoku3D(int length, RuleModule[] wantedRules): Sudoku3D</u></td></tr>
+                            <tr><td align="left">- Sudoku3DFactory(int length, RuleModule[] wantedRules)</td></tr>
+                            <tr><td align="left">- getPossibleSolution(): boolean</td></tr>
+                            <tr><td align="left">- hasMoreSolutions(): boolean</td></tr>
+                            <tr><td align="left">- solveSudoku3D(): boolean</td></tr>
+                            <tr><td align="left">- solveSudoku3D(int x, int y, int z): boolean</td></tr>
+                            <tr><td align="left">- getSudoku3D(): Sudoku3D</td></tr>
+                            <tr><td align="left">- init(): void</td></tr>
+                            <tr><td align="left">- insertSomeNumbers(): void</td></tr>
+                            <tr><td align="left">- removeNumbers(): void</td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>>
+        ]
+    }
+
+    sudoku3dfactory -> sudoku3d [arrowhead=none]
     request_startgame -> abstracthandler [arrowhead=onormal]
     request_startgame -> sudoku3dfactory [arrowhead=none]
     request_checkfields -> abstracthandler [arrowhead=onormal]
