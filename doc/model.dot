@@ -13,7 +13,9 @@ digraph G {
         fontsize = 10
     ]
 
-    subgraph packagemodel{
+    subgraph clustermodel{
+
+        label = "package: model"
 
         field [
             label =
@@ -177,10 +179,13 @@ digraph G {
                 </tr>
             </table>>
         ]
+
+        {rank="same" unit field}
     }
 
-    sudoku3dfactory -> sudoku3dmodel
+    sudoku3dfactory -> sudoku3dmodel [arrowhead=none]
     field -> sudoku3dmodel [arrowhead=diamond]
     unit -> sudoku3dmodel [arrowhead=diamond]
+    field -> unit [arrowhead=odiamond]
     sudoku3dmodel -> sudoku3d [arrowhead=onormal,style=dashed]
 }
