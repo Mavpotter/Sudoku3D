@@ -18,44 +18,6 @@ digraph G {
 
         label = "package: model"
 
-        field [
-            label =
-            <<table border="0" cellspacing="0" cellborder="1">
-                <tr>
-                    <td>Field</td>
-                </tr>
-                <tr>
-                    <td>
-                        <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left">- isChangeable: boolean</td></tr>
-                            <tr><td align="left">- x: int</td></tr>
-                            <tr><td align="left">- y: int</td></tr>
-                            <tr><td align="left">- z: int</td></tr>
-                            <tr><td align="left">- correctInput: int</td></tr>
-                            <tr><td align="left">- userInput: int</td></tr>
-                            <tr><td align="left">- ownUnits: ArrayList&lt;Unit&gt;</td></tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left"># Field(int x, int y, int z)</td></tr>
-                            <tr><td align="left"># getIsChangeable(): boolean</td></tr>
-                            <tr><td align="left"># insert(int n): boolean</td></tr>
-                            <tr><td align="left"># isCorrectlyFilled(): boolean</td></tr>
-                            <tr><td align="left"># getUserInput(): int</td></tr>
-                            <tr><td align="left"># getCoordsAsArray(): int[]</td></tr>
-                            <tr><td align="left"># getUnits(): Unit[]</td></tr>
-                            <tr><td align="left"># addUnit(Unit u): void</td></tr>
-                            <tr><td align="left"># setIsChangeable(boolean isChangeable): void</td></tr>
-                            <tr><td align="left"># setSolutionFromCurrentState(): void</td></tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>>
-        ]
-
         sudoku3d [
             label =
             <<table border="0" cellspacing="0" cellborder="1">
@@ -95,7 +57,6 @@ digraph G {
                         <table border="0" cellspacing="0" cellborder="0">
                             <tr><td align="left">- length: int</td></tr>
                             <tr><td align="left">- solutions: int</td></tr>
-                            <tr><td align="left">- wantedRules: RuleModule[]</td></tr>
                             <tr><td align="left">- sudoku3D: Sudoku3DModel</td></tr>
                         </table>
                     </td>
@@ -103,16 +64,18 @@ digraph G {
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left"><u>+ createSudoku3D(int length, RuleModule[] wantedRules): Sudoku3D</u></td></tr>
-                            <tr><td align="left">- Sudoku3DFactory(int length, RuleModule[] wantedRules)</td></tr>
+                            <tr><td align="left"><u>+ createSudoku3D(int length): Sudoku3D</u></td></tr>
+                            <tr><td align="left">- Sudoku3DFactory(int length)</td></tr>
                             <tr><td align="left">- getPossibleSolution(): boolean</td></tr>
                             <tr><td align="left">- hasMoreSolutions(): boolean</td></tr>
                             <tr><td align="left">- solveSudoku3D(): boolean</td></tr>
-                            <tr><td align="left">- solveSudoku3D(int x, int y, int z): boolean</td></tr>
+                            <tr><td align="left">- solveSudoku3D(int x, int y, int z, boolean removeCalculations): boolean</td></tr>
                             <tr><td align="left">- getSudoku3D(): Sudoku3D</td></tr>
                             <tr><td align="left">- init(): void</td></tr>
-                            <tr><td align="left">- insertSomeNumbers(): void</td></tr>
-                            <tr><td align="left">- removeNumbers(): void</td></tr>
+                            <tr><td align="left">- permutateNumbers(): void</td></tr>
+                            <tr><td align="left">- setCurrentStateAsSolution(): void</td></tr>
+                            <tr><td align="left">- extractNumbers(): void</td></tr>
+                            <tr><td align="left">- removePairs(int pairsToRemove): boolean</td></tr>
                         </table>
                     </td>
                 </tr>
@@ -132,86 +95,26 @@ digraph G {
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left"># sudoku3D: Field[][][]</td></tr>
-                            <tr><td align="left"># units: Unit[]</td></tr>
+                            <tr><td align="left"># isPermanent: boolean[][][]</td></tr>
+                            <tr><td align="left"># sudoku3D: int[][][]</td></tr>
+                            <tr><td align="left"># solution: int[][][]</td></tr>
                             <tr><td align="left"># length: int</td></tr>
+                            <tr><td align="left"># n: int</td></tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
+                            <tr><td align="left"># Sudoku3DModel(int length)</td></tr>
                             <tr><td align="left">+ insert(int x, int y, int z, int n): boolean</td></tr>
                             <tr><td align="left">+ isSolved(): boolean</td></tr>
                             <tr><td align="left">+ getWrongEntries(): int[][]</td></tr>
                             <tr><td align="left">+ getFieldValues(): int[][][]</td></tr>
                             <tr><td align="left">+ clear(): void</td></tr>
-                            <tr><td align="left"># noDuplicatesInUnitsFromField(Field f): boolean</td></tr>
-                            <tr><td align="left"># setSolution(): void</td></tr>
-                            <tr><td align="left"># buildUnitsFromCoordinates(int[][][] coordinates): void</td></tr>
-                            <tr><td align="left">- intiFields(): void</td></tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>>
-        ]
-
-        unit [
-            label =
-            <<table border="0" cellspacing="0" cellborder="1">
-                <tr>
-                    <td>Unit</td>
-                </tr>
-                <tr>
-                    <td>
-                        <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left">- unit: Field[]</td></tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left"># Unit(Field[] unit)</td></tr>
-                            <tr><td align="left"># isFreeOfDuplicates(): boolean</td></tr>
-                            <tr><td align="left"># assignToFields(): void</td></tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>>
-        ]
-
-        {rank="same" unit field}
-    }
-
-    subgraph clusterrulemodule{
-
-        label = "package: rulemodule"
-
-        rulemodule [
-            label =
-            <<table border="0" cellspacing="0" cellborder="1">
-                <tr>
-                    <td>
-                        <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="center"><i>&lt;&lt;enumeration&gt;&gt;</i></td></tr>
-                            <tr><td align="center"><i>RuleModule</i></td></tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left">ROWS</td></tr>
-                            <tr><td align="left">BOXES</td></tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left">+ getIndices(int length): ArrayList&lt;int[][]&gt;</td></tr>
-                            <tr><td align="left">~ calcIndices(int length): ArrayList&lt;int[][]&gt;</td></tr>
+                            <tr><td align="left">- isLegal(int x, int y, int z): boolean</td></tr>
+                            <tr><td align="left">- areRowsAndColumnsOk(int x, int y, int z): boolean</td></tr>
+                            <tr><td align="left">- areBoxesOk(int x, int y, int z): boolean</td></tr>
                         </table>
                     </td>
                 </tr>
@@ -220,10 +123,6 @@ digraph G {
     }
 
     sudoku3dfactory -> sudoku3dmodel
-    sudoku3dfactory -> rulemodule
     sudoku3dfactory -> sudoku3d [arrowhead=none]
-    field -> sudoku3dmodel [arrowhead=diamond]
-    unit -> sudoku3dmodel [arrowhead=diamond]
-    field -> unit [arrowhead=odiamond]
     sudoku3dmodel -> sudoku3d [arrowhead=onormal,style=dashed]
 }

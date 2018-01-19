@@ -224,7 +224,6 @@ digraph G {
                         <table border="0" cellspacing="0" cellborder="0">
                             <tr><td align="left">- length: int</td></tr>
                             <tr><td align="left">- solutions: int</td></tr>
-                            <tr><td align="left">- wantedRules: RuleModule[]</td></tr>
                             <tr><td align="left">- sudoku3D: Sudoku3DModel</td></tr>
                         </table>
                     </td>
@@ -232,16 +231,18 @@ digraph G {
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left"><u>+ createSudoku3D(int length, RuleModule[] wantedRules): Sudoku3D</u></td></tr>
-                            <tr><td align="left">- Sudoku3DFactory(int length, RuleModule[] wantedRules)</td></tr>
+                            <tr><td align="left"><u>+ createSudoku3D(int length): Sudoku3D</u></td></tr>
+                            <tr><td align="left">- Sudoku3DFactory(int length)</td></tr>
                             <tr><td align="left">- getPossibleSolution(): boolean</td></tr>
                             <tr><td align="left">- hasMoreSolutions(): boolean</td></tr>
                             <tr><td align="left">- solveSudoku3D(): boolean</td></tr>
-                            <tr><td align="left">- solveSudoku3D(int x, int y, int z): boolean</td></tr>
+                            <tr><td align="left">- solveSudoku3D(int x, int y, int z, boolean removeCalculations): boolean</td></tr>
                             <tr><td align="left">- getSudoku3D(): Sudoku3D</td></tr>
                             <tr><td align="left">- init(): void</td></tr>
-                            <tr><td align="left">- insertSomeNumbers(): void</td></tr>
-                            <tr><td align="left">- removeNumbers(): void</td></tr>
+                            <tr><td align="left">- permutateNumbers(): void</td></tr>
+                            <tr><td align="left">- setCurrentStateAsSolution(): void</td></tr>
+                            <tr><td align="left">- extractNumbers(): void</td></tr>
+                            <tr><td align="left">- removePairs(int pairsToRemove): boolean</td></tr>
                         </table>
                     </td>
                 </tr>
