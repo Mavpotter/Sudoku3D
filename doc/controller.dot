@@ -128,7 +128,7 @@ digraph G {
                 <tr>
                     <td>
                         <table border="0" cellspacing="0" cellborder="0">
-                            <tr><td align="left"></td></tr>
+                            <tr><td align="left"># rb: Request_Bridge</td></tr>
                         </table>
                     </td>
                 </tr>
@@ -258,8 +258,8 @@ digraph G {
     request_startgame -> sudoku3dfactory [arrowhead=none]
     request_checkfields -> abstracthandler [arrowhead=onormal]
     request_checkfields -> sudoku3d [arrowhead=none]
-    request_startgame -> request_bridge [arrowhead=diamond]
-    request_checkfields -> request_bridge [arrowhead=diamond]
+    request_startgame -> request_bridge [arrowhead=none]
+    request_checkfields -> request_bridge [arrowhead=none]
     request_bridge -> sudoku3D_servlet [arrowhead=diamond]
     sudoku3D_servlet -> httpservlet [arrowhead=onormal]
 }
