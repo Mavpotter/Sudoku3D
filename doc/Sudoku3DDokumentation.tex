@@ -1,0 +1,63 @@
+\documentclass[a4paper,12pt]{scrreprt}
+
+\usepackage{german}
+
+\title{Sudoku3D}
+\subtitle{Projekt 3. Lehrjahr MTS51}
+\author{Niclas Hofmann, Son Le Cong \& Marvin Mahn}
+\date{29. Mai 2018}
+
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	
+	\chapter{Einf\"uhrung}
+	\section{Vorwort}
+	Die vorliegende Dokumentation wurde von den Autoren im Rahmen des Projektes im dritten Lehrjahres
+	f\"ur das Lernfeld 13 erstellt.\medskip \\
+	Zur Unterscheidung, welche Texte von welchen Autoren verfa{\ss}t wurden, wird dies an den jeweiligen
+	Stellen erw\"ahnt\footnote{Ist kein Name angef\"uhrt war der Autor Niclas Hofmann}.
+	Sinnvollerweise beschreibt jeder Autor die von ihm erstellten Teile des Projektes.
+	
+	\section{Problemdefinition}
+	Herk\"ommliche Sudokus k\"onnen je nach Schwierigkeitsgrad zwar an Komplexit\"at gewinnen,
+	bleiben aber dennoch recht schnell l\"osbar. Auch Sonderformen wie Killer-Sudokus\footnote{
+	https://de.wikipedia.org/wiki/Killer-Sudoku} oder X-Sudokus\footnote{https://de.wikipedia.org/
+	wiki/Sudoku\#X-Sudoku} bieten nur bis zu einem gewissen Grad weiteren Anreiz.
+
+	\section{Projektziel}
+	Um etwas neuartiges zu schaffen, das genau diesen Anreiz bietet, soll nun ein Programm erstellt
+	werden, welches 3D-Sudokus kreiert, analog zum 3D-Schach aus der Fernsehserie Star Trek.
+	\medskip \\
+	Aber auch hier soll es m\"oglich sein, nicht nur mit den Standardregeln zu spielen, sondern auch
+	andere verwenden zu k\"onnen.\medskip \\
+	Au{\ss}erdem soll das Endprodukt als interaktives Spiel auf der MATSE-Hompage\footnote{
+	https://www.matse-ausbildung.de/} angeboten werden.
+
+	\section{Wichtige Termine}
+	Diese Projekt mu{\ss} am 29. Mai 2018 pr\"asentiert werden.
+	
+	\chapter{Entwicklerdokumentation}
+	\section{Model}
+	\subsection{Problemanalyse}
+	F\"ur das Model fallen die folgenden Aufgaben an:
+	\begin{enumerate}
+		\item Erstellung eines Sudoku3D's nach den ausgew\"ahlten Regelmodulen
+		\item Entfernung einiger Zahlen, um ein spielbares Sudoku3D anzubieten
+		\item Speicherung der Daten (vorgegebene Zahlen und User-Eingaben)
+		\item \"Uberpr\"ufung, ob das Sudoku3D gel\"ost wurde
+		\item Ein $clear$, das alle User-Eingaben entfernt
+		\item Die Zur\"uckgabe aller falsch eingetragenen zahlen
+		\item Wiederherstellung eines Sudoku3D mit gegebenen Zahlen, Regelmodulen und
+			User-Eingaben
+	\end{enumerate}
+
+	\subsubsection{Regelmodule}
+	Da zum Erstellen eines Sudoku3D's Regelmodule ben\"otigt werden, m\"u{\ss}en diese vorhanden
+	sein. Doch was ist/leistet ein Regelmodul?\medskip \\
+	Ein Regelmodul definiert die Einheiten, in denen die Zahlen von 1-9 nur einmal vorkommen d\"urfen.
+	Bei einem normalen Sudoku sind dies z. B. die 3x3 Boxen, die Zeilen und die Spalten. Weil die
+	Unterscheidung zwischen Zeile und Spalte in der Dimension liegt, werden diese im Sudoku3D nicht
+	unterschieden. Somit sind die zwei Grundlegenden Regelmodule auch schon vorgegeben.
+\end{document}
