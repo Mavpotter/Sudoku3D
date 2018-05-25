@@ -37,8 +37,8 @@ digraph G {
                         <table border="0" cellspacing="0" cellborder="0">
                             <tr><td align="left">+ insert(int x, int y, int z, int n): boolean</td></tr>
                             <tr><td align="left">+ isSolved(): boolean</td></tr>
-                            <tr><td align="left">+ getWrongEntries(): int[][]</td></tr>
                             <tr><td align="left">+ getFieldValues(): int[][][]</td></tr>
+                            <tr><td align="left">+ getSolution(): int[][][]</td></tr>
                             <tr><td align="left">+ clear(): void</td></tr>
                         </table>
                     </td>
@@ -159,8 +159,8 @@ digraph G {
                             <tr><td align="left"># Sudoku3DModel(int length, ArrayList&lt;int[][]&gt; unitCoordinates)</td></tr>
                             <tr><td align="left">+ insert(int x, int y, int z, int n): boolean</td></tr>
                             <tr><td align="left">+ isSolved(): boolean</td></tr>
-                            <tr><td align="left">+ getWrongEntries(): int[][]</td></tr>
                             <tr><td align="left">+ getFieldValues(): int[][][]</td></tr>
+                            <tr><td align="left">+ getSolution(): int[][][]</td></tr>
                             <tr><td align="left">+ clear(): void</td></tr>
                             <tr><td align="left"># noDuplicInUnitsFromField(Field f): boolean</td></tr>
                             <tr><td align="left"># setSolution(): void</td></tr>
@@ -233,6 +233,7 @@ digraph G {
                             <tr><td align="left"># insert(int n): boolean</td></tr>
                             <tr><td align="left"># isCorrectlyFilled(): boolean</td></tr>
                             <tr><td align="left"># getUserInput(): int</td></tr>
+							<tr><td align="left"># getSolution(): int</td></tr>
                             <tr><td align="left"># getCoords(): int[]</td></tr>
                             <tr><td align="left"># getUnits(): ArrayList&lt;Unit&gt;</td></tr>
                             <tr><td align="left"># addUnit(Unit u): void</td></tr>
