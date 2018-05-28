@@ -64,6 +64,42 @@
 	Sudoku3D nicht unterschieden. Somit sind die zwei Grundlegenden Regelmodule auch schon
 	vorgegeben.
 
+	\section{View (Son Le Cong)}
+	\subsection{Struktur}
+	\begin{tabular}{l | r}
+		\hline
+		Index.html & Startseite \\
+		\hline
+		js/ & Javascripts \\
+		\hline
+		css/ & Gestaltung der Seite \\
+		\hline
+	\end{tabular}
+
+	\subsection{Beschreibung}
+	Das 3D-Sudoku wird durch die Verbindung mit dem Controller automatisch erstellt und mit Hilfe
+	einer Javascript-Bibliothek dargestellt.
+
+	\subsection{Programmlogik}
+	\subsubsection{Zahlenbelegung}
+	Die Berechnung zur Erstellung des 3D-Sudokus wird serverseitig gemacht. Das Ergebnis der
+	Berechnung wird in einem Array f\"ur die View-Schnittstelle als Inputdaten \"ubergeben. Felder,
+	die auszuf\"ullen sind, bekommen den Wert 0.\medskip \\
+	Beispiel:\medskip \\
+	Um ein 9x9x9 Sudoku darzustellen wird ein Array mit einer L\"ange von 729 Elementen ben\"otigt.\medskip \\
+	\begin{tabular}{l|c|c|c|c|c|c|c}
+		\hline
+		Index & 0 & 1 & 2 & 3 & ... & 727 & 728 \\
+		\hline
+		Wert & 2 & 5 & 7 & 8 & ... & 9 & 4 \\
+		\hline
+	\end{tabular}
+
+	\subsubsection{Algorithmus}
+	Die Logik des Programms wird durch folgende Struktogramme dargestellt.
+	1) F\"ur die Darstellung eines 3-dimensionalen Sudokus
+	2) F\"ur die Darstellung der sichtbaren Ebene durch Mausklick des Benutzers
+
 	\section{Controller: Die Schnittstelle (Marvin Mahn)}
 	\subsection{Bestandteile}
 	Die Schnittstelle soll die Kommunikation zwischen Grafikoberfl\"ache (Client) und den
