@@ -132,17 +132,44 @@
 	\begin{figure}[h]
 		\includegraphics[scale=0.55]{pictures/Tomcat-Versionsvergleich}
 		\caption{http://tomcat.apache.org/whichversion.html}
-	\end{figure}\\
+	\end{figure}\medskip \\
+	\subsection{Einrichtung des Servers}
 	Ein weiterer Aspekt des Pakets ist die Einrichtung des Servers und des Spiels, soda{\ss} man nur
 	einen Knopf dr\"ucken mu{\ss} um die Anwendung verwenden zu k\"onnen\footnote{Dies entspricht
 	einem Installer}. Dieser Teil ist vorerst nicht weiter verfolgt worden. Die Klassen für das Spiel befinden
-	sich in einem $WAR$-Archiv. Dieses $WAR$-Archiv wird im Tomcat-Server-Verzeichnis unter $webapps$
-	abgelegt. Zu jeder Webapplikation, die \"uber den einen Tomcat-Server l\"auft, wird auch ein Eintrag
-	in der $web.xml$, des Servers ben\"otigt. Diese befindet sich im Tomcat-Server-Verzeichnis im Ordner
-	$conf$. Beide Installationsvorgaben werden manuell durchgef\"uhrt. F\"ur die Verwendung des
-	Serverdashboards des Tomcat-Servers \"uber die Browseroberfl\"ache mu{\ss} eine Administratorrolle
-	f\"ur den Server definiert werden. Diese Einstellung erfolgt \"uber die $tomcat$-$users$
-	Konfigurationsdatei, im $conf$ Ordner des Tomcat-Server-Verzeichnisses.\medskip \\
+	sich in einem $WAR$-Archiv. Dieses $WAR$-Archiv wird \"uber den $Host Manager$ des Servers eingespielt.
+	Um das Management-Tool des Servers zu \"offnen muss zuerst der Server gestartet werden.
+	F\"ur die Verwendung des Serverdashboards des Tomcat-Servers \"uber die Browseroberfl\"ache
+	mu{\ss} eine Administratorrolle f\"ur den Server definiert werden.\\
+	Diese Einstellung erfolgt \"uber die $tomcat$-$users$ Konfigurationsdatei,
+	im $conf$ Ordner des Tomcat-Server-Verzeichnisses.\\
+	\begin{figure}[h]
+		\includegraphics[scale=0.7]{pictures/adminrole_example}
+		\caption{Beispiel eines Users mit Administratorrechten}
+	\end{figure}\\
+	Als IP-Adresse wird default $localhost$ verwendet. Von au{\ss}en wird die IP-Adresse des Ger\"ats ben\"otigt
+	auf dem der Server l\"auft.
+	Der $Host Manager$ l\"asst sich \"uber einen Browser \"offnen\footnote{{server}:{port}}.
+	Mit Klick auf $Host Manager$ wird nach der Abfrage des Benutzernamens und Passwort, eine \"Ubersicht
+	aller auf dem Server befindlichen Webapplikationen angezeigt.
+	Weiter unten im Abschnitt $Deploy$ kann das $WAR$-Archiv ausgew\"ahlt werden und mit Klick auf den $Deploy$-Button
+	dem Server als Webapplikation hinzugef\"ugt werden.
+	Die Anwendung ist erreichbar \"uber:
+	\begin{itemize}
+		\item server:port/sudoku3d/start.html
+	\end{itemize}\\
+	$/sudoku3d/start.html$ ist \"uber die $web.xml$ der Webapplikation einstellbar\footnote{Auffindbar im Tomcat-Server-Verzeichnis unter $webapps$ - Sudoku-Applikation - $WEB-INF$}.\\
+	\begin{figure}[h]
+		\includegraphics[scale=0.7]{pictures/web_example}
+		\caption{\"Ubersicht der $web.xml$ der Sudoku-Webapplikation}
+	\end{figure}\\
+	Bezeichnungen:
+	\begin{description}
+		\item[$url-pattern$] Dieser Abschnitt legt den Pfad der Webapplikation fest.
+		\item[$welcome-file$] Dieser Abschnitt legt die Datei fest, die bei Aufruf der Seite angezeigt werden soll.
+	\end{description}
+	Wichtig! $servlet-class$ darf nicht ver\"andert werden, da dies der Pfad zum Servlet der Webapplikation ist.
+	Ohne korrekte Eingabe werden Anfragen von Clientseite das Servlet nicht erreichen.\smallskip \\
 	Ist der Server eingerichtet, kann dieser nun Anfragen - in unserem Fall von HTTP-Natur - entgegen
 	nehmen. Mit dem Datenmanagement sei ein weiterer und der wichtigste Punkt des Pakets benannt.
 	Wie erfolgt die Kommunikation zwischen Client und Server? Nach welchem Aufbau findet das
@@ -220,18 +247,23 @@
 	zum Server ben\"otigt. Sollte der Speicher leer sein, wird eine entsprechende R\"uckmeldung angezeigt.
 
 	\chapter{Benutzerhandbuch}
-	\section{Systemvorraussetzungen (Marvin Mahn)}
+	\section{Mindestsystemvorraussetzungen Server (Marvin Mahn)}
+	\begin{description}
+		\item[Festplattenspeicher:] 128 MB
+		\item[Arbeitsspeicher:] 128 MB
+	\end{description}
+	\section{Systemvorraussetzungen Client (Marvin Mahn)}
 	Empfohlen wird einer der folgenden Browser:
 	\begin{itemize}
-		\item Chrome: ab Version 56.0
+%		\item Chrome: ab Version 56.0
 		\item Internet Explorer: ab Version 11
 %		\item Microsoft Edge: ab Version 38.14393
 		\item Morzilla Firefox: ab Version 35.0
-		\item Safari: ab Version 10.0
-		\item Opera: ab Version 11.60
+%		\item Safari: ab Version 10.0
+%		\item Opera: ab Version 11.60
 	\end{itemize}
 
-	\section{Benutzerhandbuch (Marvin Mahn)}
+	\section{Benutzerhandbuch (Marvin Mahn und )}
 	\begin{description}
 		\item[Spiel starten] Zum Starten des Spiels mu{\ss} der Start-Button bet\"atigt werden. Das Laden
 			des Spiels kann je nach Antwortgeschwindigkeit des Servers und Geschwindigkeit des Browsers
