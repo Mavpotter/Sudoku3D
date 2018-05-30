@@ -66,17 +66,6 @@
 	vorgegeben.
 
 	\section{View (Son Le Cong)}
-	\subsection{Struktur}
-	\begin{tabular}{l | r}
-		\hline
-		Index.html & Startseite \\
-		\hline
-		js/ & Javascripts \\
-		\hline
-		css/ & Gestaltung der Seite \\
-		\hline
-	\end{tabular}
-
 	\subsection{Beschreibung}
 	Das 3D-Sudoku wird durch die Verbindung mit dem Controller automatisch erstellt und mit Hilfe
 	einer Javascript-Bibliothek dargestellt.
@@ -106,7 +95,30 @@
 		\includegraphics[scale=0.7]{pictures/Struktogramm2}
 		\caption{F\"ur die Darstellung der sichtbaren Ebene durch Mausklick des Benutzers}
 	\end{figure}
-
+	
+	\subsection{Quellcode-Beschreibung}
+	\subsection{Erstellung eines W\"urfels}
+	Jede Ober- und Innenfl\"ache eines W\"urfels wird mit einem Bild verbunden, das dann als Textur verwendet wird,
+	um das W\"urfelobjekt sichbar zu machen. Das Bild zeigt dann die zugeh\"orige Zahl von 1 bis 9 des W\"urfels an.
+	\begin{figure}[h]
+		\includegraphics[scale=0.6]{pictures/createCube_sourcecode}
+	\end{figure}
+	
+	\subsection{Erstellung eines kompletten 3D Sudokus ( 9x9x9 )}
+	Um das Sudoku in einem w\"urfelf\"ormigen Ausstellungsraum darzustellen werden drei verschachtelte Schleifen ben\"otigt,
+	die jeweils eine Dimension des 3D Sudokus erstellen.
+	\begin{figure}[h]
+		\includegraphics[scale=0.6]{pictures/createSudoku_sourcecode}
+	\end{figure}
+	
+	\subsection{Fokusieren von Ebenen}
+	F\"ur eine leichtere Bedienung ist eine Ebene durch Mausklick fokusierbar\footnote{Die restlichen werden ausgeblendet}.
+	Um zu \"uberprüfen ob ein W\"urfel in der gleichen Ebene des angeklickten W\"urfels ist, wird abgefragt ob das abgerundete
+	Ergebnis der Division der ID-Nummer eines W\"urfels, durch die Anzahl der W\"urfel in einer Ebene, mit dem angeklickten W\"urfel gleich ist.
+	\begin{figure}[h]
+		\includegraphics[scale=0.7]{pictures/focusLayer_sourcecode}
+	\end{figure} \medskip \\
+	
 	\section{Controller: Die Schnittstelle (Marvin Mahn)}
 	\subsection{Bestandteile}
 	Die Schnittstelle soll die Kommunikation zwischen Grafikoberfl\"ache (Client) und den
@@ -157,7 +169,7 @@
 	Die Anwendung ist erreichbar \"uber:
 	\begin{itemize}
 		\item server:port/sudoku3d/start.html
-	\end{itemize}\\
+	\end{itemize}
 	$/sudoku3d/start.html$ ist \"uber die $web.xml$ der Webapplikation einstellbar\footnote{Auffindbar im Tomcat-Server-Verzeichnis unter $webapps$ - Sudoku-Applikation - $WEB-INF$}.\\
 	\begin{figure}[h]
 		\includegraphics[scale=0.7]{pictures/web_example}
@@ -210,7 +222,13 @@
 	\begin{sidewaysfigure}[p]
 		\includegraphics[scale=0.55]{pictures/controller}
 		\caption{Server-Paket als UML-Diagramm}
-	\end{sidewaysfigure}\medskip \\
+	\end{sidewaysfigure}\smallskip \\
+	S\"amtliche mit der Anzeige in Verbindung stehende Dateien werden im Verzeichnis $template$ des
+	$WAR$-Archivs gehalten. Dazu z\"ahlen die JavaScript-Dateien $3dSudoku.js$, $jquery-3.2.1.js$,
+	$OrbitControls.js$, $stats.min.js$, $three$ und $threex.domevent.js$. Desweiteren gibt es den Ordner
+	$images$ mit dem Unterverzeichnis $numbers$, wo die Bilder f\"ur die Anzeige untergebracht sind.
+	Im Ordner $html$ befindet sich die HTML-Oberfl\"ache $start.html$, die bei Aufruf der Seite geladen wird.
+	F\"ur $start.html$ gibt es im $css$-Ordner die dazugeh\"origen CSS-Dateien.\medskip \\
 
 	\subsection{Client}
 	Client ist jeder Rechner, der mit dem Server kommuniziert. Auf Clientseite wird die Oberfl\"ache des
@@ -247,10 +265,11 @@
 	zum Server ben\"otigt. Sollte der Speicher leer sein, wird eine entsprechende R\"uckmeldung angezeigt.
 
 	\chapter{Benutzerhandbuch}
-	\section{Mindestsystemvorraussetzungen Server (Marvin Mahn)}
+	\section{Empfohlene Serverspezifikationen (Marvin Mahn)}
 	\begin{description}
+		\item[Server:] Tomcat 7.x und h\"oher
 		\item[Festplattenspeicher:] 128 MB
-		\item[Arbeitsspeicher:] 128 MB
+		\item[Arbeitsspeicher:] 1 GB RAM
 	\end{description}
 	\section{Systemvorraussetzungen Client (Marvin Mahn)}
 	Empfohlen wird einer der folgenden Browser:
@@ -262,8 +281,9 @@
 %		\item Safari: ab Version 10.0
 %		\item Opera: ab Version 11.60
 	\end{itemize}
+	Empfohlen ist eine Prozessorleistung von mindestens 2.0 GHz
 
-	\section{Benutzerhandbuch (Marvin Mahn und )}
+	\section{Benutzerhandbuch (Son Le Cong und Marvin Mahn)}
 	\begin{description}
 		\item[Spiel starten] Zum Starten des Spiels mu{\ss} der Start-Button bet\"atigt werden. Das Laden
 			des Spiels kann je nach Antwortgeschwindigkeit des Servers und Geschwindigkeit des Browsers
@@ -280,6 +300,22 @@
 		\item[Undo] Mit einem Klick auf den Undo-Button, wird die letzte Aktion r\"uckg\"angig gemacht.
 			Dies funktioniert nur einmal bei jeder neuen Aktion.
 		\item[Spiel l\"osen] Es wird die L\"osung des Sudoku3Ds eingef\"ugt. Das Spiel gilt dann als beendet.
+		\item[Steuerung] Die Steuerung ist mit Maus empfohlen. Zum Bewegen der Kamera halten Sie die rechte Maustaste
+			gedr\"uckt und bewegen Sie die Maus. Zum Rotieren der Kamera halten Sie die rechte Maustaste gedr\"uckt
+			und bewegen Sie die Maus. Zum Zoomen wird das Mausrad verwendet.
+		\item[Ansichten] Das Spiel besitzt zwei Ansichten, einmal links die 3D Ansicht und einmal rechts,
+			die 2D Ansicht. Die 2D Ansicht dient der Anzeige und Bearbeitung der aktuell ausgew\"ahlten Ebene.\\
+			\begin{figure}[h]
+				\includegraphics[scale=0.3]{pictures/cover}
+			\end{figure}\\
+		\item[Bearebiten eines Feldes] Um ein Feld zu bearbeiten, w\"ahlen Sie die Ebene aus, klicken Sie mit der linken
+			Maustaste, rechts in der 2D Ansicht, auf das zubearbeitende Feld und geben Sie die gew\"unschte Zahl ein.
+		\item[Auswahl einer Ebene] Um eine Ebene auszuw\"ahlen, klicken Sie in der 3D Ansicht auf die gew\"unschte
+			Ebene mit der linken Maustaste. Die Ebene wird dann wie in der folgenden Abbildung fokusiert:\\
+			\begin{figure}[h]
+				\includegraphics[scale=0.7]{pictures/layerfocus_example}
+			\end{figure}\\
+			Um den Fokus wieder wegzunehmen, klicken Sie auf den Hintergrund.
 	\end{description}
 
 	\chapter{Schlu{\ss}wort}
@@ -299,6 +335,14 @@
 	Erfahrung in punkto Zusammenarbeit. Durch das Austauschen untereinander und die getrennten
 	Arbeitsgebiete, kam das Entwicklungsverhalten auch sehr nah an das eines Betriebs in der offenen
 	Wirtschaft.
+	
+	\subsection{View (Son Le Cong)}
+	Nach Anfertigung des ersten Prototyps und verschiedenen Tests stellt man fest, dass es in vielen Bereichen
+	noch Optimierungsbedarf gibt. Beispielsweise Leistungsverbesserungen, Ressourcenbedarf, etc.
+	Auf jeden Fall ist es nicht ausgeschlossen einige Prozesse der Oberfl\"ache zu optimieren.
+	Au{\ss}erdem hat man gemerkt, wie das Zusammenspiel der einzelnen Komponenten des MVC (Model View Controller) sein sollte.
+	Die Ansicht der View-Schnittstelle (Browser), die Kommunikation mit dem Server, der wesentliche Rechnenschritte
+	nach Anfrage des Browsers im Hintergrund serverseitig ausf\"uhrt.
 
 	\section{Ausblick}
 	\subsection{Controller (Marvin Mahn)}
@@ -312,4 +356,25 @@
 	Datenbank landet. In diesem Zuge sollte dann aber auch der Server besser abgesichert werden. F\"ur
 	den Server, samt Webapplikation sollte ein Installer erzeugt werden. Das manuelle Einrichten, ist zwar
 	nicht aufwendig, aber kostet dennoch Zeit.
+	\subsection{View (Son Le Cong)}
+	\subsection{Bibliothek}
+	F\"ur die Darstellung des 3D Sudokus wurde eine MIT-lizenzierte Javascript-Bibliothek (Threejs) eingebunden.
+	Die Bibliothek ist sehr umfangreich und bietet viele M\"oglichkeiten um 3D Objekte darzustellen,
+	allerdings werden f\"ur eine Szene viele Resourcen ben\"otigt wie: Kamera, Licht, Renderer (Bildsynthese),
+	Objektgeometrie durch Punkte und Ebene, Material und Textur (Oberfl\"ache). 
+	\begin{figure}[h]
+		\includegraphics[scale=0.7]{pictures/Sceneoverview}
+		\caption{Aufbau einer Szene aus der Bibliothek}
+	\end{figure}\smallskip \\
+	Ein 3D Objekt in W\"urfelform ben\"otigt 8 Punkte und 12 Seitenfl\"achen.
+	Ein 3D Sudoku mit h\"oheren Dimensionen als 9x9x9 erzeugt eine sehr hohe CPU-Last und verursacht Ruckeln
+	der Grafik im Browser, sodass das 3D Sudoku nicht mehr spielbar ist.
+	Daraus schlussfolgernd ist es entweder \"uberfl\"ussig, eine Bibliothek daf\"ur zu verwenden bzw. n\"otig
+	die recheninternen Prozesse zu optimieren.
+	\subsection{Bedienung}
+	Das 3D-Sudoku-Spiel ist ein erster Release, weshalb Verbesserungsbedarf besteht, die auf Grundlage von
+	Anwenderfeedback passieren kann. Eine m\"ogliche Verbesserung von Entwicklerseite ist z.B : ein Popup beim
+	Verlassen des Spiel, L\"osungstechniken anbieten wie Block-Line Interaction, etc.
+	Ein automatisches Speichern des Spielstands in regelm\"a{\ss}igen Abst\"anden w\"are auch zu bedenken.
+	
 \end{document}
