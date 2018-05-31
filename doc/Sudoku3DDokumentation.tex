@@ -181,7 +181,7 @@
 		\item[$welcome-file$] Dieser Abschnitt legt die Datei fest, die bei Aufruf der Seite angezeigt werden soll.
 	\end{description}
 	Wichtig! $servlet-class$ darf nicht ver\"andert werden, da dies der Pfad zum Servlet der Webapplikation ist.
-	Ohne korrekte Eingabe werden Anfragen von Clientseite das Servlet nicht erreichen.\smallskip \\
+	Ohne korrekte Eingabe werden Anfragen von Clientseite das Servlet nicht erreichen.\medskip \\
 	Ist der Server eingerichtet, kann dieser nun Anfragen - in unserem Fall von HTTP-Natur - entgegen
 	nehmen. Mit dem Datenmanagement sei ein weiterer und der wichtigste Punkt des Pakets benannt.
 	Wie erfolgt die Kommunikation zwischen Client und Server? Nach welchem Aufbau findet das
@@ -222,7 +222,7 @@
 	\begin{sidewaysfigure}[p]
 		\includegraphics[scale=0.55]{pictures/controller}
 		\caption{Server-Paket als UML-Diagramm}
-	\end{sidewaysfigure}\smallskip \\
+	\end{sidewaysfigure}\medskip \\
 	S\"amtliche mit der Anzeige in Verbindung stehende Dateien werden im Verzeichnis $template$ des
 	$WAR$-Archivs gehalten. Dazu z\"ahlen die JavaScript-Dateien $3dSudoku.js$, $jquery-3.2.1.js$,
 	$OrbitControls.js$, $stats.min.js$, $three$ und $threex.domevent.js$. Desweiteren gibt es den Ordner
@@ -233,8 +233,7 @@
 	\subsection{Client}
 	Client ist jeder Rechner, der mit dem Server kommuniziert. Auf Clientseite wird die Oberfl\"ache des
 	Spiels geladen. Zur Oberfl\"ache des Spiels geh\"oren ein Start-Button, ein Neustart-Button zum
-	Laden eines neuen Spiels, ein L\"osen-Button zum automatischen L\"osen des Sudokus und ein
-	Undo-Button zum Zur\"ucknehmen der letzten Aktion.\medskip \\
+	Laden eines neuen Spiels und ein L\"osen-Button zum automatischen L\"osen des Sudokus.\medskip \\
 	Beim Client werden alle relevanten Daten f\"ur das Spiel gehalten. Dies ermöglicht, nach dem
 	Erhalten der Daten vom Server, ein komplettes Offline-Spielen. Sollte das Spiel neugestartet werden,
 	wird wieder eine Verbindung zum Server ben\"otigt.
@@ -267,9 +266,10 @@
 	\chapter{Benutzerhandbuch}
 	\section{Empfohlene Serverspezifikationen (Marvin Mahn)}
 	\begin{description}
-		\item[Server:] Tomcat 7.x und h\"oher
+		\item[Java:] Java 8 oder h\"oher
+		\item[Server:] Tomcat 7.x oder h\"oher
 		\item[Festplattenspeicher:] 128 MB
-		\item[Arbeitsspeicher:] 1 GB RAM
+		\item[Arbeitsspeicher:] mindestens 1 GB RAM
 	\end{description}
 	\section{Systemvorraussetzungen Client (Marvin Mahn)}
 	Empfohlen wird einer der folgenden Browser:
@@ -311,11 +311,11 @@
 		\item[Bearebiten eines Feldes] Um ein Feld zu bearbeiten, w\"ahlen Sie die Ebene aus, klicken Sie mit der linken
 			Maustaste, rechts in der 2D Ansicht, auf das zubearbeitende Feld und geben Sie die gew\"unschte Zahl ein.
 		\item[Auswahl einer Ebene] Um eine Ebene auszuw\"ahlen, klicken Sie in der 3D Ansicht auf die gew\"unschte
-			Ebene mit der linken Maustaste. Die Ebene wird dann wie in der folgenden Abbildung fokusiert:\\
+			Ebene mit der linken Maustaste. Die Ebene wird dann wie in der folgenden Abbildung fokusiert\footnote{
+			Um den Fokus wieder wegzunehmen, klicken Sie auf den Hintergrund}:\\
 			\begin{figure}[h]
-				\includegraphics[scale=0.7]{pictures/layerfocus_example}
-			\end{figure}\\
-			Um den Fokus wieder wegzunehmen, klicken Sie auf den Hintergrund.
+				\includegraphics[scale=1]{pictures/layerfocus_example}
+			\end{figure}
 	\end{description}
 
 	\chapter{Schlu{\ss}wort}
@@ -358,17 +358,17 @@
 	nicht aufwendig, aber kostet dennoch Zeit.
 	\subsection{View (Son Le Cong)}
 	\subsection{Bibliothek}
-	F\"ur die Darstellung des 3D Sudokus wurde eine MIT-lizenzierte Javascript-Bibliothek (Threejs) eingebunden.
-	Die Bibliothek ist sehr umfangreich und bietet viele M\"oglichkeiten um 3D Objekte darzustellen,
+	F\"ur die Darstellung des 3D-Sudokus wurde eine MIT-lizenzierte Javascript-Bibliothek (Threejs) eingebunden.
+	Die Bibliothek ist sehr umfangreich und bietet viele M\"oglichkeiten um 3D-Objekte darzustellen,
 	allerdings werden f\"ur eine Szene viele Resourcen ben\"otigt wie: Kamera, Licht, Renderer (Bildsynthese),
 	Objektgeometrie durch Punkte und Ebene, Material und Textur (Oberfl\"ache). 
 	\begin{figure}[h]
 		\includegraphics[scale=0.7]{pictures/Sceneoverview}
 		\caption{Aufbau einer Szene aus der Bibliothek}
-	\end{figure}\smallskip \\
-	Ein 3D Objekt in W\"urfelform ben\"otigt 8 Punkte und 12 Seitenfl\"achen.
-	Ein 3D Sudoku mit h\"oheren Dimensionen als 9x9x9 erzeugt eine sehr hohe CPU-Last und verursacht Ruckeln
-	der Grafik im Browser, sodass das 3D Sudoku nicht mehr spielbar ist.
+	\end{figure}\medskip \\
+	Ein 3D-Objekt in W\"urfelform ben\"otigt 8 Punkte und 12 Seitenfl\"achen.
+	Ein 3D-Sudoku mit h\"oheren Dimensionen als 9x9x9 erzeugt eine sehr hohe CPU-Last und verursacht Ruckeln
+	der Grafik im Browser, sodass das 3D-Sudoku nicht mehr spielbar ist.
 	Daraus schlussfolgernd ist es entweder \"uberfl\"ussig, eine Bibliothek daf\"ur zu verwenden bzw. n\"otig
 	die recheninternen Prozesse zu optimieren.
 	\subsection{Bedienung}
